@@ -15,37 +15,37 @@ import Weapons.WeaponStore;
 public class MainGame {
 	public static void main(String[] args) {
 		//////////////////////////////////////////////////////////////////
-		// Création des tiers 
-		ItemTier tier1 = new ItemTier("Débutant", 1);
-		ItemTier tier2 = new ItemTier("Intermédiaire", 5);
+		// CrÃ©ation des tiers 
+		ItemTier tier1 = new ItemTier("DÃ©butant", 1);
+		ItemTier tier2 = new ItemTier("IntermÃ©diaire", 5);
 		ItemTier tier3 = new ItemTier("Expert", 10);
-		ItemTier tier4 = new ItemTier("Légende", 15);
+		ItemTier tier4 = new ItemTier("LÃ©gende", 15);
 		//////////////////////////////////////////////////////////////////
 		
 		
 		
 		//////////////////////////////////////////////////////////////////
-		// Création des armes 
+		// CrÃ©ation des armes 
 		Sword swordT1 = new Sword("Beginner's Sword",25,5,tier1);
 		Sword swordT2 = new Sword("Doran's Blade",400,15,tier2);
 		Sword swordT3 = new Sword("Serpent's Fang",1500,50,tier3);
 		Sword swordT4 = new Sword("Infinity Edge",3000,120,tier4);
 		
 		Staff staffT1 = new Staff("Beginner's Staff",20,4,tier1);
-		Staff staffT2 = new Staff("",220,13,tier2);
-		Staff staffT3 = new Staff("",1400,48,tier3);
+		Staff staffT2 = new Staff("Shen's Staff",220,13,tier2);
+		Staff staffT3 = new Staff("Sequoiadendron's Staff",1400,48,tier3);
 		Staff staffT4 = new Staff("Void Staff",1800,80,tier4);
 		
 		Axe axeT1 = new Axe("Beginner's Axe",15,3,tier1);
-		Axe axeT2 = new Axe("",200,10,tier2);
-		Axe axeT3 = new Axe("",770,40,tier3);
+		Axe axeT2 = new Axe("Olaf's Axe",200,10,tier2);
+		Axe axeT3 = new Axe("Viborg's Axe",770,40,tier3);
 		Axe axeT4 = new Axe("Executioner's Axe",1340,70,tier4);
 		//////////////////////////////////////////////////////////////////
 		
 		
 		
 		//////////////////////////////////////////////////////////////////
-		// Création du magasin
+		// CrÃ©ation du magasin
 		WeaponStore shop = new WeaponStore();
 		shop.add(swordT1); shop.add(swordT2); shop.add(swordT3); shop.add(swordT4);
 		shop.add(staffT1); shop.add(staffT2); shop.add(staffT3); shop.add(staffT4);
@@ -55,7 +55,7 @@ public class MainGame {
 		
 		
 		//////////////////////////////////////////////////////////////////
-		// Création du joueur
+		// CrÃ©ation du joueur
         Scanner scanner = new Scanner(System.in);
         System.out.println(" Bienvenue dans le jeu ! Veuillez entrer votre nom :\n");
         String playerName = scanner.nextLine();
@@ -66,7 +66,7 @@ public class MainGame {
         System.out.println("3. Viking");
 
         int classChoice = scanner.nextInt();
-        scanner.nextLine(); // Pour consommer la nouvelle ligne restante après le nombre
+        scanner.nextLine(); // Pour consommer la nouvelle ligne restante aprÃ¨s le nombre
 
         Player player1 = new Player(playerName);
 
@@ -81,27 +81,27 @@ public class MainGame {
                 player1.addWeaponToStuff(axeT1);
                 break;
             default:
-                System.out.println(" Choix de classe invalide. Sabreur choisi par défaut.");
+                System.out.println(" Choix de classe invalide. Sabreur choisi par dÃ©faut.");
                 player1.addWeaponToStuff(swordT1);
                 break;
         }
 
         System.out.println("\nBienvenue, " + playerName + " !");
         System.out.println("Classe : " + (classChoice == 1 ? "Sabreur" : (classChoice == 2 ? "Sorcier" : "Viking")));
-        System.out.println("Arme équipée : " + player1.getPlayerStuff().get(0).getWeaponName());
-        System.out.println("\nRègles du jeu :\n" +
-                " Vous pouvez vous déplacer sur la carte en utilisant les touches z/q/s/d\n" +
-                " Vous rencontrez des monstres, des obstacles, des magasins et d'autres éléments pour progresser dans le jeu.\n" +
-                " Affrontez les monstres pour gagner de l'expérience et de l'argent.\n" +
+        System.out.println("Arme Ã©quipÃ©e : " + player1.getPlayerStuff().get(0).getWeaponName());
+        System.out.println("\nRÃ¨gles du jeu :\n" +
+                " Vous pouvez vous dÃ©placer sur la carte en utilisant les touches z/q/s/d\n" +
+                " Vous rencontrez des monstres, des obstacles, des magasins et d'autres Ã©lÃ©ments pour progresser dans le jeu.\n" +
+                " Affrontez les monstres pour gagner de l'expÃ©rience et de l'argent.\n" +
                 " Bonne chance !");
-        System.out.println("\n Appuyez sur Entrée pour commencer le jeu \n");
-        scanner.nextLine(); // Attendez que l'utilisateur appuie sur Entrée pour commencer le jeu
+        System.out.println("\n Appuyez sur EntrÃ©e pour commencer le jeu \n");
+        scanner.nextLine(); // Attendez que l'utilisateur appuie sur EntrÃ©e pour commencer le jeu
 		//////////////////////////////////////////////////////////////////
 		
         
 		
 		//////////////////////////////////////////////////////////////////
-		// Création de la map
+		// CrÃ©ation de la map
 		Map map = new Map("map.txt");
 		//////////////////////////////////////////////////////////////////
 		
@@ -121,7 +121,7 @@ public class MainGame {
 			map.afficherMap();
 		    char caseActuelle = map.deplacerJoueur();
 		    
-		    // Créer une instance de la classe Random
+		    // CrÃ©er une instance de la classe Random
 	        Random random = new Random();
 	        
 		    // Obtenir la position actuelle du joueur
@@ -129,21 +129,21 @@ public class MainGame {
 		    int ligneJoueur = positionJoueur[0];
 		    int colonneJoueur = positionJoueur[1];
 
-		    // Interactions spécifiques
+		    // Interactions spÃ©cifiques
 		    switch (caseActuelle) {
-		        case 'M': // Magasin rencontré
+		        case 'M': // Magasin rencontrÃ©
 		            shop.weaponsListShop(player1);
 		            break;
 		            
-		        case 'H': // Heal rencontré
+		        case 'H': // Heal rencontrÃ©
 		        	player1.heal();
 		            break;
 		            
-		        case 'R': // Money rencontré
+		        case 'R': // Money rencontrÃ©
 		        	player1.winMoney(200);
 		            break;
 		            
-		        case 'O': // Obstacle rencontré
+		        case 'O': // Obstacle rencontrÃ©
 		        	
 		        	int randomInt = random.nextInt((2) + 1) + 1;
 		        	if (randomInt == 1) {
@@ -160,28 +160,28 @@ public class MainGame {
 		        	}
 		            break;
 		            
-		        case 'G': // Gobelin rencontré
+		        case 'G': // Gobelin rencontrÃ©
 		        	Monster gobelin = new Monster("Gobelin",30,1);
 		        	Battle.startBattle(player1, gobelin);
 		            break;
 		            
-		        case 'N': // Nagosy rencontré
+		        case 'N': // Nagosy rencontrÃ©
 		        	Monster nagosy = new Monster("Nagosy",80,10);
 		        	Battle.startBattle(player1, nagosy);
 		            break;
 		            
-		        case 'A': // Alphorithien rencontré
-		        	Monster alphorithien = new Monster("Alphorithien",800,70);
+		        case 'A': // Alphorithien rencontrÃ©
+		        	Monster alphorithien = new Monster("Alphorithien",800,60);
 		        	Battle.startBattle(player1, alphorithien);
 		            break;
 		            
-		        case 'B': // Boss rencontré
-		        	Monster boss = new Monster("Boss",1500,120);
+		        case 'B': // Boss rencontrÃ©
+		        	Monster boss = new Monster("Boss",1300,100);
 		        	Battle.startBattle(player1, boss);
 		            break;
 		            
 		        case 'F': // Fin du jeu !
-		            System.out.println("\n\n\n Vous avez fini le jeu ! Félicitations !!! \n\n\n");
+		            System.out.println("\n\n\n Vous avez fini le jeu ! FÃ©licitations !!! \n\n\n");
 		            return;
 		    }
 	    }
